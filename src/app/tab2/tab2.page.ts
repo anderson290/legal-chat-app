@@ -9,4 +9,28 @@ export class Tab2Page {
 
   constructor() {}
 
+  messages = [
+    {
+      user: 'Anderson',
+      createdAt: 20191009,
+      msg: 'Hey'
+    },
+    {
+      user: 'Max',
+      createdAt: 20191009,
+      msg: 'whatsup'
+    },
+    {
+      user: 'Anderson',
+      createdAt: 20191009,
+      msg: 'upup'
+    }
+  ]
+
+  currentUser = 'Anderson';
+  
+  sendMessage(){
+
+  }
+
 }
