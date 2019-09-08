@@ -1,5 +1,6 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { IonContent } from '@ionic/angular';
+import { ChatService } from '../services/chat.service';
 
 @Component({
   selector: 'app-tab2',
@@ -9,54 +10,100 @@ import { IonContent } from '@ionic/angular';
 export class Tab2Page implements OnInit {
 
 
-  @ViewChild('content', {static: true}) content: IonContent;
+  @ViewChild('content', { static: true }) content: IonContent;
 
   public date = new Date();
 
   public newMsg: string = '';
 
-  constructor() {}
+  public recieveMessage: any = null;
 
-  ngOnInit(){
-    setTimeout(()=>{
+  public loading: boolean = false;
+
+  public type: string;
+
+  public conversationLog: any;
+
+  constructor(
+    private chatService: ChatService
+  ) { }
+
+  ngOnInit() {
+    setTimeout(() => {
       this.content.scrollToBottom(200);
     });
-  }
-  messages = [
-    {
-      user: 'Anderson',
-      createdAt: Date.now(),
-      msg: 'Hey'
-    },
-    {
-      user: 'Max',
-      createdAt: Date.now(),
-      msg: 'whatsup'
-    },
-    {
-      user: 'Anderson',
-      createdAt: Date.now(),
-      msg: 'upup'
-    },
-    {
-      user: 'Max',
-      createdAt: Date.now(),
-      msg: 'Alo'
-    }
-  ]
 
-  currentUser = 'Anderson';
-  
-  sendMessage(){
+    sessionStorage.setItem('conversation', '');
+    this.getMessage();
+  }
+
+  messages = [];
+
+  async getMessage() {
+    this.loading = true;
+    if (sessionStorage.getItem('conversation')) {
+      this.conversationLog = JSON.parse(sessionStorage.getItem('conversation'));
+      if (this.conversationLog.output.generic[0].response_type == 'text') {
+        this.recieveMessage = this.conversationLog.output.generic[0].text;
+        this.messages.push({
+          user: 'Max',
+          createdAt: Date.now(),
+          msg: this.recieveMessage
+        });
+      }
+    } else {
+      await this.chatService.getMessage().then(res => {
+        this.loading = false;
+        this.recieveMessage = res;
+        this.type = this.recieveMessage.options.response_type;
+      });
+      this.messages.push({
+        user: 'Max',
+        createdAt: Date.now(),
+        msg: this.recieveMessage.message
+      });
+    }
+  }
+
+  async getOption(option) {
+    console.log('option', option);
+    this.newMsg = option;
+    this.sendMessage();
+  }
+
+  currentUser = 'User';
+
+  async sendMessage() {
     this.messages.push({
-      user: 'Anderson',
+      user: 'User',
       createdAt: new Date().getTime(),
       msg: this.newMsg
     });
 
+    let param = {
+      message: this.newMsg,
+      context: {}
+    }
+
+    let watsonMsg;
+
+    if (this.conversationLog) {
+      param.context = this.conversationLog.context
+      watsonMsg = await this.chatService.sendMessage(param);
+
+    } else {
+      watsonMsg = await this.chatService.sendMessage(param);
+    }
+
+    console.log(watsonMsg);
+
+    sessionStorage.setItem('conversation', JSON.stringify(watsonMsg));
+
+    this.getMessage();
+
     this.newMsg = '';
 
-    setTimeout(()=>{
+    setTimeout(() => {
       this.content.scrollToBottom(200);
     })
   }

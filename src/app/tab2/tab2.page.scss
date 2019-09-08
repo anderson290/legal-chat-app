@@ -1,3 +1,9 @@
+@import '../../assets/scss/chat';
+
+//colors
+
+$white: #fff;
+
 .header-icon{
     width: 2em;
     fill: white;
@@ -32,6 +38,16 @@
 .btn-send{
     --padding-start: 0.5em;
     --padding-end: 1em;
+}
+
+.btn-option{
+    background: transparent;
+    border: 1px solid $white;
+    width: 100%;
+    padding: 1em;
+    margin: 1em 0em;
+    color: $white;
+    border-radius: 1em;
 }
 
 
