@@ -57,25 +57,26 @@ export class Tab2Page implements OnInit {
         this.recieveMessage = res;
         this.type = this.recieveMessage.options.response_type;
       });
+      // if(this.message)
       this.messages.push({
         user: 'Max',
         createdAt: Date.now(),
         msg: this.recieveMessage.message
       });
     }
+    console.log('recieveMessage', this.conversationLog.output);
   }
 
   async getOption(option) {
-    console.log('option', option);
     this.newMsg = option;
     this.sendMessage();
   }
 
-  currentUser = 'User';
+  currentUser = 'Você';
 
   async sendMessage() {
     this.messages.push({
-      user: 'User',
+      user: 'Você',
       createdAt: new Date().getTime(),
       msg: this.newMsg
     });
@@ -94,8 +95,6 @@ export class Tab2Page implements OnInit {
     } else {
       watsonMsg = await this.chatService.sendMessage(param);
     }
-
-    console.log(watsonMsg);
 
     sessionStorage.setItem('conversation', JSON.stringify(watsonMsg));
 

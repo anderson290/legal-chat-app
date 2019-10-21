@@ -17,19 +17,26 @@
           <p>{{message.msg}}</p>
           <div class="" *ngIf="type == 'option'">
             <button class="btn-option" *ngFor="let op of recieveMessage?.options?.options" (click)="getOption(op?.value?.input?.text)">{{op?.label}}</button>
-          </div>
-
+          </div>             
           <div class="date" text-right>{{message.createdAt | date:'short'}}</div>
      
         </ion-col>
-          
 
       <ion-col offset="3" size="9" class="userChat" *ngIf="currentUser === message.user">
           <b>{{message.user}}</b>
           <p>{{message.msg}}</p>
           <div class="date" text-right>{{message.createdAt | date:'short'}}</div>
       </ion-col>
+
+
     </ion-row>
+    <ion-row>
+      <ion-col  class="botChat" *ngIf="conversationLog?.output?.generic[0].response_type == 'option'">
+        <p>{{conversationLog?.output?.generic[0].title}}</p> 
+        <button class="btn-option" *ngFor="let op of conversationLog?.output?.generic[0]?.options" (click)="getOption(op?.value?.input?.text)">{{op?.label}}</button>
+   </ion-col>
+    </ion-row>
+    
     <ion-row>
       <ion-col size="12" *ngIf="loading">
         <div class="typing-indicator">
