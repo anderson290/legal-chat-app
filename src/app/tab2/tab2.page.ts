@@ -42,9 +42,12 @@ export class Tab2Page implements OnInit {
   async getMessage() {
     this.loading = true;
     if (sessionStorage.getItem('conversation')) {
+      
       this.conversationLog = JSON.parse(sessionStorage.getItem('conversation'));
       if (this.conversationLog.output.generic[0].response_type == 'text') {
         this.recieveMessage = this.conversationLog.output.generic[0].text;
+        this.loading = false;
+
         this.messages.push({
           user: 'Max',
           createdAt: Date.now(),
@@ -64,7 +67,6 @@ export class Tab2Page implements OnInit {
         msg: this.recieveMessage.message
       });
     }
-    console.log('recieveMessage', this.conversationLog.output);
   }
 
   async getOption(option) {
