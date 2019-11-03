@@ -1,0 +1,26 @@
+.btn-send{
+    --padding-start: 0.5em;
+    --padding-end: 1em;
+    background: #2a7268;
+    border-radius: 5em;
+    width: 100%;
+    height: 90%;
+    margin: .3em 0em;
+    padding: 0em 0em 0em 0.4em;
+    ion-icon{
+        color: white;
+    }
+}
+
+.chat{
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.close{
+    font-size: 2em;
+    float: right;
+    position: relative;
+    top: 0.5em;
+    right: .5em;
+}

@@ -24,3 +24,29 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.text-center{
+    text-align: center;
+}
+
+.float-right{
+    float: right;
+}
+
+.userChat{
+    background: blue;
+    color: white;
+    padding: 1em;
+    border-radius: 1em 1em 0em 1em;
+    margin: 1em 0em;
+}
+
+.botChat{
+    background: rgb(122, 122, 185);
+    color: white;
+    padding: 1em;
+    border-radius: 1em 1em 1em 0em;
+    margin: 1em 0em;
+
+}
+

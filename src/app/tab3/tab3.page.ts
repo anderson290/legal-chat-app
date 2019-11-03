@@ -27,9 +27,10 @@ export class Tab3Page implements OnInit{
      });   
   }
 
-  async presentModal() {
+  async presentModal(company) {
     const modal = await this.modalController.create({
-      component: CompanyDetailComponent
+      component: CompanyDetailComponent,
+      componentProps: company
     });
     return await modal.present();
   }
