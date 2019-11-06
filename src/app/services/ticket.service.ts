@@ -18,19 +18,16 @@ export class TicketService {
 
   
   async getTicketByCompany(companyId) { 
-    let params = {
-      companyId: companyId
-    }
-
-    console.log(params);
+    let params = {companyId: companyId};
     return await this.httpClient.post(this.url+'ticket/getByCompany', params, { headers: this.headerL }).toPromise();
-
-    // return await this.httpClient.post(this.url+'ticket/getTicketByCompany', params, { headers: this.headerL }).toPromise();
   }
 
-  async updateTicket(params) { 
- 
+  async updateTicket(params) {  
     return await this.httpClient.post(this.url+'ticket/update', params, { headers: this.headerL }).toPromise();
-
   }
+
+  async createTicket(params) {  
+    return await this.httpClient.post(this.url+'ticket/create', params, { headers: this.headerL }).toPromise();
+  }
+
 }
