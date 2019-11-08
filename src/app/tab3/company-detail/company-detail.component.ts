@@ -57,7 +57,8 @@ export class CompanyDetailComponent implements OnInit {
     await loading.present();
 
     await this.ticketService.getTicketByCompany(this.navParams.data._id).then(res=>{
-      this.ticket = res[0];
+      this.ticket = res[res['length'] - 1];
+      console.log(this.ticket);
 
       loading.onDidDismiss();
     });

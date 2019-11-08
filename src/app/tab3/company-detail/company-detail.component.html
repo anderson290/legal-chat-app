@@ -4,7 +4,7 @@
 
 </div>
 
-<ion-content #content *ngIf="ticket">
+<ion-content #content *ngIf="ticket?.status == 'inProgress'">
   <ion-grid>
     <ion-row *ngFor="let chat of ticket?.conversation">
       <ion-col size="9" class="botChat" *ngIf="currentUser !== chat.userType">
@@ -21,7 +21,7 @@
   </ion-grid>
 </ion-content>
 
-<ion-content *ngIf="!ticket">
+<ion-content *ngIf="!ticket || ticket?.status != 'inProgress'">
   <ion-item>
     <ion-label position="floating">Título</ion-label>
     <ion-input [(ngModel)]="ticketModel.title"></ion-input>
@@ -31,12 +31,12 @@
     <ion-textarea name="initialTextarea" [(ngModel)]="ticketModel.conversation.message"></ion-textarea>
   </ion-item>
 </ion-content>
-<ion-footer *ngIf="!ticket?.conversation">
+<ion-footer *ngIf="!ticket || ticket?.status != 'inProgress'">
     <ion-button expand="full" class="full-button" (click)="sendMessage('new')">Solicitar Chamado</ion-button>
 </ion-footer>
 
 <form (ngSubmit)="sendMessage()">
-  <ion-footer *ngIf="ticket">
+  <ion-footer *ngIf="ticket?.status == 'inProgress'">
     <ion-grid>
       <ion-row>
         <ion-col size="10">
