@@ -1,25 +1,24 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      Empresas
-    </ion-title>
+    <ion-title>Empresas</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content fullscreen>
   <ion-card *ngFor="let company of companies">
-    <img src="https://picsum.photos/id/65/200/200" alt="LOGO">
+    <img
+      src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.theselfemployed.com%2Fwp-content%2Fuploads%2F2015%2F05%2Floan.jpg&f=1&nofb=1"
+      alt="LOGO">
     <ion-card-header>
-      <div class="float-right">
-        <ion-badge  color="primary">10</ion-badge>        
-      </div>
+      <ion-card-subtitle>Nome da Empresa:</ion-card-subtitle>
       <ion-card-title>{{company?.companyName}}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <p>
-        {{company?.mission}}
-      </p>
+      <p> {{company?.mission}}</p>
+      <ion-button class="btn-default" expand="block" (click)="presentModal(company)">
+        Abrir Chamado
+        <ion-icon slot="end" name="add"></ion-icon>
+      </ion-button>
     </ion-card-content>
-    <button class="btn-100" (click)="presentModal(company)">Abrir Chamado</button>
   </ion-card>
 </ion-content>

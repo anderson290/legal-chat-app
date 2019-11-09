@@ -25,28 +25,106 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
-.text-center{
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import url('https://fonts.googleapis.com/css?family=Crete+Round|Roboto&display=swap');
+
+.text-center {
     text-align: center;
 }
 
-.float-right{
+.float-right {
     float: right;
 }
 
-.userChat{
-    background: blue;
+.userChat {
+    float: right;
+    background: #123b68;
     color: white;
+    width: 20em;
+    margin: .4em 1em 1em auto;
+    text-align: right;
     padding: 1em;
     border-radius: 1em 1em 0em 1em;
-    margin: 1em 0em;
+    word-break: break-word;
+    box-shadow: 0px 5px 0px 0px rgba(0, 42, 87, 0.7);
 }
 
-.botChat{
-    background: rgb(122, 122, 185);
-    color: white;
+.botChat {
+    background: #b9cee6;
     padding: 1em;
+    width: 20em;
+    color: #123b68;
+    margin: 1em;
     border-radius: 1em 1em 1em 0em;
-    margin: 1em 0em;
-
+    word-break: break-word;
+    box-shadow: 0px 5px 0px 0px rgba(0, 64, 134, 0.3);
 }
 
+* {
+    outline: none !important;
+    text-decoration: none !important;
+}
+
+body {
+    background-color: #f8f8f8 !important;
+    font-family: 'Roboto' !important;
+}
+
+.btn-default {
+    --background: #123b68;
+    color: #ffffff;
+    opacity: .9;
+    text-transform: uppercase;
+    transition: all .4s;
+
+    &:hover {
+        opacity: 1;
+    }
+
+    &:focus {
+        color: #ffffff;
+        border-bottom: 0;
+    }
+
+    &[disabled="true"] {
+        background-color: #e0e0e0;
+        color: #707070;
+    }
+}
+
+.btn-clear-blue {
+    --background: #588cc6;
+    color: #ffffff;
+    opacity: .9;
+    text-transform: uppercase;
+    transition: all .4s;
+
+    &:hover {
+        opacity: 1;
+    }
+
+    &:focus {
+        color: #ffffff;
+    }
+
+    &[disabled="true"] {
+        background-color: #e0e0e0;
+        color: #707070;
+    }
+}
+
+ion-header {
+    background-color: white;
+    color: #123b68 !important;
+    border-bottom: 3px solid #588cc6;
+    ion-toolbar {
+        >ion-title {
+            font-family: 'Crete Round';
+        }
+    }
+}
+
+ion-card{
+    box-shadow: 0px 10px 30px 0px rgba(147, 147, 147, 0.16) !important;
+    padding: 1em;
+}
