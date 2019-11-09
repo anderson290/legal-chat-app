@@ -10,37 +10,53 @@ $white: #fff;
 }
 
 
-.message-input{
-    width: 100%;
-    resize: none;
-    height: 100%;
-    border: 1px solid;
-    padding: 0.5em 1em;
-    border-radius: 1em;
-}
-
 .btn-send{
-    --padding-start: 0.5em;
-    --padding-end: 1em;
-    background: #2a7268;
+    /* --padding-start: 0.5em; */
+    /* --padding-end: 1em; */
+    background: #588cc6;
     border-radius: 5em;
-    width: 100%;
-    height: 90%;
-    margin: .3em 0em;
-    padding: 0em 0em 0em 0.4em;
+    width: 40px;
+    height: 40px;
+    margin: 0.3em 0em;
+    font-size: x-small;
+    padding: 0em 0em 0em 0em;
     ion-icon{
         color: white;
     }
 }
 
-.btn-option{
-    background: transparent;
-    border: 1px solid $white;
-    width: 100%;
-    padding: 1em;
-    margin: 1em 0em;
-    color: $white;
-    border-radius: 1em;
+ion-col.submitMessage {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+textarea.native-textarea {
+    padding: 0 !important;
+}
+
+.btn-default-message {
+    background: #123b68;
+    border-radius: 5px;
+    padding: 10px 15px;
+    color: #ffffff;
+    opacity: .9;
+    text-transform: uppercase;
+    transition: all .4s;
+
+    &:hover {
+        opacity: 1;
+    }
+
+    &:focus {
+        color: #ffffff;
+        border-bottom: 0;
+    }
+
+    &[disabled="true"] {
+        background-color: #e0e0e0;
+        color: #707070;
+    }
 }
 
 
