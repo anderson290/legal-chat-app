@@ -9,6 +9,7 @@ import { ChatService } from '../services/chat.service';
 })
 export class Tab2Page implements OnInit {
 
+  
 
   @ViewChild('content', { static: true }) content: IonContent;
 

@@ -19,7 +19,6 @@ export class ChatService {
 
   
   async getMessage() {
-    console.log('url', this.url);
     return await this.httpClient.get(this.url+'conversation/first', { headers: this.headerL }).toPromise();
   }
 
@@ -27,14 +26,13 @@ export class ChatService {
     return await this.httpClient.post(this.url+'conversation/send', message, { headers: this.headerL }).toPromise();
   }
 
-  async createConversation(user) {
-
+  async createUser(user) {
+    console.log(user);
     return await this.httpClient.post(this.url+'conversation/create', user, { headers: this.headerL }).toPromise();
   }
 
   async getUsers(){
     return await this.httpClient.get(this.url+'conversation/users', { headers: this.headerL }).toPromise();
-  
   }
 
   async updateUser(id, user){
