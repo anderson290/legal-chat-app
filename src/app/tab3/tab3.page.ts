@@ -24,6 +24,7 @@ export class Tab3Page implements OnInit{
   async getCompanies(){
     await this.companyService.getCompanies().then(res=>{
       this.companies = res;
+      this.companies=this.companies.filter(res=>res.level === 1);
      });   
   }
 

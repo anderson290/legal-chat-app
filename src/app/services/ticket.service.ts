@@ -22,6 +22,11 @@ export class TicketService {
     return await this.httpClient.post(this.url+'ticket/getByCompany', params, { headers: this.headerL }).toPromise();
   }
 
+  async getTicketByUser(userId)  {
+    let params = {userId: userId};
+    return await this.httpClient.post(this.url+'ticket/getByUser', params, { headers: this.headerL }).toPromise();
+  }
+
   async updateTicket(params) {  
     return await this.httpClient.post(this.url+'ticket/update', params, { headers: this.headerL }).toPromise();
   }

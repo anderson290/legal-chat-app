@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { ModalController, NavParams, IonContent, LoadingController, AlertController } from '@ionic/angular';
 import { TicketService } from 'src/app/services/ticket.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-company-detail',
@@ -25,6 +26,8 @@ export class CompanyDetailComponent implements OnInit {
   };
   messages: any;
   textMessage: string;
+  tokenObj: any;
+  user: any;
 
 
   constructor(
@@ -32,12 +35,14 @@ export class CompanyDetailComponent implements OnInit {
     private navParams: NavParams,
     private ticketService: TicketService,
     public loadingController: LoadingController,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private authService: AuthService
   ) { }
   @ViewChild('content', { static: true }) content: IonContent;
   // currentModal: any;
   ngOnInit() { 
     this.getMessages();
+    this. getUser();
 
   }
 
@@ -45,6 +50,13 @@ export class CompanyDetailComponent implements OnInit {
   
 
 
+  }
+
+  getUser(){
+    this.tokenObj = JSON.parse(localStorage.getItem('user'));
+    this.authService.decodeToken(this.tokenObj.token).subscribe(res => {
+      this.user = res.user;
+    });
   }
 
 
@@ -73,6 +85,7 @@ export class CompanyDetailComponent implements OnInit {
     if(key == 'new'){
      
       this.ticketModel.companyId = this.navParams.data._id;
+      this.ticketModel.userId = this.user._id;
       this.ticketService.createTicket(this.ticketModel).then(res=>{
         if(res){
           this.dismissModal();     

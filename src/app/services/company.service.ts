@@ -20,5 +20,7 @@ export class CompanyService {
   async getCompanies() { 
     return await this.httpClient.get(this.url+'company/companies', { headers: this.headerL }).toPromise();
   }
-
+  async getCompanyById(companyId){
+    return await this.httpClient.post<any>(`${this.url}/company`, companyId, { headers: this.headerL }).toPromise();
+  }
 }

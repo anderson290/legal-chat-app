@@ -8,23 +8,15 @@ import { AuthService } from '../services/auth.service';
 })
 export class TabsPage implements OnInit {
 
-  tokenObj: any;
-  user: any;
 
   constructor(
     private authService: AuthService
   ) {}
 
   ngOnInit(){
-    this.getCompany();
   }
 
-  getCompany(){
-    this.tokenObj = JSON.parse(localStorage.getItem('user'));
-    this.authService.decodeToken(this.tokenObj.token).subscribe(res => {
-      this.user = res.user;
-    });
-  }
+
 
 
 }

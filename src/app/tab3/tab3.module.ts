@@ -9,7 +9,7 @@ import { CompanyDetailComponent } from './company-detail/company-detail.componen
 @NgModule({
   declarations:[
     Tab3Page,
-    CompanyDetailComponent
+    CompanyDetailComponent,
 
 
   ],

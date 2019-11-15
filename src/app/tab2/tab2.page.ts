@@ -1,6 +1,7 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { IonContent } from '@ionic/angular';
 import { ChatService } from '../services/chat.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-tab2',
@@ -24,9 +25,12 @@ export class Tab2Page implements OnInit {
   public type: string;
 
   public conversationLog: any;
+  tokenObj: any;
+  user: any;
 
   constructor(
-    private chatService: ChatService
+    private chatService: ChatService,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
@@ -36,6 +40,14 @@ export class Tab2Page implements OnInit {
 
     sessionStorage.setItem('conversation', '');
     this.getMessage();
+    this.getUser();
+  }
+
+  getUser(){
+    this.tokenObj = JSON.parse(localStorage.getItem('user'));
+    this.authService.decodeToken(this.tokenObj.token).subscribe(res => {
+      this.user = res.user;
+    });
   }
 
   messages = [];
@@ -101,6 +113,9 @@ export class Tab2Page implements OnInit {
 
     sessionStorage.setItem('conversation', JSON.stringify(watsonMsg));
 
+    this.user.conversation = this.conversationLog;
+
+   
     this.getMessage();
 
     this.newMsg = '';
@@ -108,6 +123,9 @@ export class Tab2Page implements OnInit {
     setTimeout(() => {
       this.content.scrollToBottom(200);
     })
+    this.chatService.updateUser(this.user._id, this.user).then(res=>{
+      console.log("USER", res);
+    });
   }
 
 }
