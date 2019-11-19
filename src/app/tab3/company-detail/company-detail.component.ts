@@ -61,7 +61,6 @@ export class CompanyDetailComponent implements OnInit {
 
 
   async getMessages(){
-    console.log(this.ticket)
     const loading = await this.loadingController.create({
       message: 'Carregando',
       duration: 1000
@@ -69,8 +68,12 @@ export class CompanyDetailComponent implements OnInit {
     await loading.present();
 
     await this.ticketService.getTicketByCompany(this.navParams.data._id).then(res=>{
-      this.ticket = res[res['length'] - 1];
-      console.log(this.ticket);
+      this.ticket = res;
+     
+      this.ticket = this.ticket.filter(res=>res.userId == this.user._id);
+      this.ticket = this.ticket[this.ticket.length - 1];
+      
+      console.log(res);
 
       loading.onDidDismiss();
     });
