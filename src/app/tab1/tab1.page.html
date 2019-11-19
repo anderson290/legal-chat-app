@@ -1,31 +1,38 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-    Perfil
+    <ion-title> Perfil
+      <a href="/" (click)="logout()" float-right>
+        <ion-icon color="danger" name="power"></ion-icon>
+      </a>
     </ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
- <ion-grid>
-   <ion-row>
-     <ion-col size="12" class="text-center">
-        <div class="d-flex justify-content-center">
-            <div class="w-5em center-object" [inlineSVG]="user?.sex == 'Masculino' ? 'assets/icon/boy.svg' : 'assets/icon/girl.svg'"></div>
-          </div>
-      <p>{{user?.name}}</p> 
-      <p>{{user?.age}} anos</p> 
-      <hr/>   
-      <a href="/" (click)="logout()">Sair</a>  
-     </ion-col>
-     <ion-col size="12">
-      <h6>Histórico de Tickets</h6>
-      <div class="ticket" *ngFor="let ticket of tickets">
-        <p class="float-right">{{ticket?.createdAt | date: 'dd/MM/yyyy'}}</p> 
-        <p>{{ticket?.title}}</p> 
-        <ion-button (click)="openTicket(ticket)" expand="full">Visualizar</ion-button>
-      </div>
-     </ion-col>
-   </ion-row>
- </ion-grid>
+  <div class="banner">
+    <div class="user-picture">
+      <div class="w-5em picture"
+        [inlineSVG]="user?.sex == 'Masculino' ? 'assets/icon/boy.svg' : 'assets/icon/girl.svg'"></div>
+    </div>
+  </div>
+  <div class="info-user" text-center>
+    <h2>{{user?.name}}</h2>
+    <p>{{user?.age}} anos</p>
+  </div>
+  <div class="tickets-list" padding>
+    <h5>Histórico de Tickets</h5>
+    <ion-card *ngFor="let ticket of tickets">
+      <ion-card-header>
+        <ion-card-title>{{ticket?.title}}</ion-card-title>
+        <ion-card-subtitle style="display: flex; justify-content: space-between;">
+          <p [class]="ticket?.status == 'inProgress' ? 'success' : 'danger'">
+            {{ticket?.status == 'inProgress' ? 'Em Progresso' : 'Encerrado'}}
+          </p>
+          <p>{{ticket?.createdAt | date: 'dd/MM/yyyy'}}</p>
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-button class="btn-default" (click)="openTicket(ticket)" expand="block">Visualizar</ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>

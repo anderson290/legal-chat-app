@@ -3,17 +3,96 @@
   overflow: hidden;
 }
 
-.ticket{
+ion-title {
+  a {
+    ion-icon {
+      font-size: 28px;
+    }
+  }
+}
+
+ion-content {
+  .banner {
+    background-image: url('../../assets/banner.jpg');
+    background-size: cover;
+    background-position: bottom;
+    height: 130px;
+    border-bottom: 3px solid #ebebeb;
+
+    .user-picture {
+      height: inherit;
+      display: flex;
+      justify-content: center;
+      padding-top: 50px;
+
+      .picture {
+        background-color: #f5f5f5;
+        border: 3px solid #ccc;
+        border-radius: 50%;
+        max-width: 110px;
+        min-width: 110px;
+        max-height: 110px;
+        min-height: 110px;
+        overflow: hidden;
+
+        svg {
+          width: 50px;
+        }
+
+        padding-top: 8px;
+      }
+    }
+  }
+
+  .info-user {
+    margin: 45px 15px 0;
+
+    h2 {
+      color: #123b68;
+      font-family: 'Crete Round';
+      font-weight: 800;
+      text-transform: capitalize;
+    }
+
+    p {
+      color: #588cc6;
+      margin-top: 0;
+    }
+  }
+
+  .tickets-list {
+    h5 {
+      border-bottom: 2px solid #588cc6;
+      font-family: 'Crete Round';
+      margin-top: 0;
+      padding-bottom: 12px;
+    }
+    p {
+      font-family: 'Crete Round';
+      &.danger {
+        color:#f04141;
+        font-weight: 700;
+      }
+      &.success {
+        color:#0ec254;
+        font-weight: 700;
+      }
+    }
+  }
+}
+
+
+.ticket {
   padding: 1em;
   border: 1px solid;
   margin: 1em 0em;
 }
 
-.w-5em{
+.w-5em {
   width: 5em;
 }
 
-.center-object{
+.center-object {
   margin: 0 auto;
   text-align: center;
 }
