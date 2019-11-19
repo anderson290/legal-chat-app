@@ -50,14 +50,14 @@
             <ion-item>
               <ion-input formControlName="password" [type]="!hide ? 'password' : 'text'" placeholder="Digite sua senha">
               </ion-input>
-              <ion-button class="btn-default" expand="block" type="button" [disabled]="!form.controls['password'].value"
+              <ion-button class="btn-default" type="button" [disabled]="!form.controls['password'].value"
                 (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                <ion-icon [name]="hide ? 'eye-off' : 'eye'"></ion-icon>
+                <ion-icon slot="icon-only" [name]="hide ? 'eye-off' : 'eye'"></ion-icon>
               </ion-button>
             </ion-item>
           </div>
           <div padding>
-            <ion-button class="btn-default" type="submit" expand="block" (click)="create()" [disabled]="form.invalid">Cadastrar</ion-button>
+            <ion-button class="btn-default" size="large" type="submit" expand="block" (click)="create()" [disabled]="form.invalid">Cadastrar</ion-button>
           </div>
         </ion-col>
       </ion-row>

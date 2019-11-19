@@ -1,34 +1,25 @@
-<ion-header translucent>
-  <ion-toolbar>
-    <ion-title>LegalChat</ion-title>
-  </ion-toolbar>
-</ion-header>
-<ion-content fullscreen>
-  <ion-card translucent>
-    <div class="gradient-border"></div>
-    <ion-card-header>
-      <img src="../../assets/icon/company-men.svg" />
-    </ion-card-header>
-    <ion-card-content>
-      <form [formGroup]="form">
-        <ion-item>
-          <ion-input formControlName="email" type="email" placeholder="Digite seu E-mail"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-input formControlName="password" [type]="!hide ? 'password' : 'text'" placeholder="Digite sua senha">
-          </ion-input>
-          <ion-button class="btn-default" expand="block" type="button" [disabled]="!form.controls['password'].value"
-            (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-            <ion-icon [name]="hide ? 'eye-off' : 'eye'"></ion-icon>
-          </ion-button>
-        </ion-item>
-        <div class="submit">
-          <ion-button class="btn-default" type="submit" (click)="checkLogin()" [disabled]="form.invalid" expand="block">
-            Login
-          </ion-button>
-        </div>
-      </form>
-      <div text-center> Se não possui login, <a routerLink='/register'> cadastre-se</a> primeiro!</div>
-    </ion-card-content>
-  </ion-card>
+<ion-content fullscreen padding text-center>
+  <div class="logo">
+    <img src="../../assets/icon/robot.svg" />
+  </div>
+  <h3>LegalChat</h3>
+  <form [formGroup]="form">
+    <ion-item>
+      <ion-input formControlName="email" type="email" placeholder="Digite seu E-mail"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input formControlName="password" [type]="!hide ? 'password' : 'text'" placeholder="Digite sua senha">
+      </ion-input>
+      <ion-button class="btn-default" type="button" [disabled]="!form.controls['password'].value"
+        (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <ion-icon slot="icon-only" [name]="hide ? 'eye-off' : 'eye'"></ion-icon>
+      </ion-button>
+    </ion-item>
+    <div class="submit">
+      <ion-button class="btn-default" size="large" type="submit" (click)="checkLogin()" [disabled]="form.invalid" expand="block">
+        Login
+      </ion-button>
+    </div>
+  </form>
+  <div text-center> Se não possui login, <a routerLink='/register'> cadastre-se</a> primeiro!</div>
 </ion-content>

@@ -1,20 +1,27 @@
 ion-content {
-  ion-card {
-    padding: 20px 0;
-    .gradient-border {
-      background-image: linear-gradient(to right, #123b68, #588cc6);
-      height: 8px;
-      width: 100%;
-    }
-    ion-card-header {
-      margin: auto;
-      padding: 15px 0;
-      width: 120px;
-    }
-    form {
-      .submit {
-        margin: 25px 0 !important;
-      }
+  padding: 20px 0;
+
+  h3 {
+    font-family: 'Crete Round';
+    margin-bottom: 20px;
+  }
+
+  .gradient-border {
+    background-image: linear-gradient(to right, #123b68, #588cc6);
+    height: 8px;
+    width: 100%;
+  }
+
+  .logo {
+    margin: auto;
+    padding-bottom: 0px;
+    padding-top: 25px;
+    width: 100px;
+  }
+
+  form {
+    .submit {
+      margin: 25px 0 !important;
     }
   }
 }
