@@ -1,56 +1,63 @@
-<ion-toolbar>
-  <ion-buttons slot="start">
-    <ion-back-button defaultHref="/"></ion-back-button>
-  </ion-buttons>
-  <ion-title>Voltar</ion-title>
-
-</ion-toolbar>
-<ion-content  color="primary">
-
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Voltar</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div text-center>
+    <h3>Crie sua conta</h3>
+    <p color="light">Realize o cadastro da sua conta abaixo</p>
+  </div>
   <form [formGroup]="form">
     <ion-grid>
       <ion-row color="primary" justify-content-center>
         <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-          <div text-center>
-            <h3>Crie sua conta</h3>
-          </div>
           <div padding>
             <ion-item>
-              <ion-input formControlName="name" type="text" placeholder="Name" required></ion-input>
+              <ion-input formControlName="name" type="text" placeholder="Digite seu nome" required></ion-input>
             </ion-item>
             <ion-item>
-              <ion-input formControlName="email" type="email" placeholder="your@email.com" required></ion-input>
+              <ion-input formControlName="email" type="email" placeholder="Digite seu E-mail" required></ion-input>
             </ion-item>
             <ion-item>
-                <ion-label>Localização</ion-label>
-                <ion-select placeholder="Estado" formControlName="location">
-                  <ion-select-option *ngFor="let state of states" [value]="state.nome">{{state?.nome}}</ion-select-option>
-                </ion-select>             
+              <ion-label>Selecione o seu Estado</ion-label>
+              <ion-select placeholder="Estado" formControlName="location">
+                <ion-select-option *ngFor="let state of states" [value]="state.nome">{{state?.nome}}</ion-select-option>
+              </ion-select>
             </ion-item>
             <ion-item>
-              <ion-input formControlName="age" type="number" placeholder="Idade" required></ion-input>
+              <ion-input formControlName="age" type="number" placeholder="Digite sua Idade" maxlength="2" required>
+              </ion-input>
             </ion-item>
             <ion-item>
-                <ion-label>Estado Civil</ion-label>
-                <ion-select formControlName="maritalStatus">
-                  <ion-select-option value="Casado">Casado(a)</ion-select-option>
-                  <ion-select-option value="Solteiro">Solteiro(a)</ion-select-option>
-                  <ion-select-option value="Viuvo">Viúvo(a)</ion-select-option>
-                </ion-select>   
+              <ion-label>Estado Civil</ion-label>
+              <ion-select formControlName="maritalStatus">
+                <ion-select-option value="Casado">Casado(a)</ion-select-option>
+                <ion-select-option value="Solteiro">Solteiro(a)</ion-select-option>
+                <ion-select-option value="Viuvo">Viúvo(a)</ion-select-option>
+              </ion-select>
             </ion-item>
             <ion-item>
-                    <ion-label>Sexo</ion-label>
-                    <ion-select formControlName="sex">
-                      <ion-select-option value="Masculino">Masculino</ion-select-option>
-                      <ion-select-option value="Feminino">Feminino</ion-select-option>
-                    </ion-select>  
+              <ion-label>Sexo</ion-label>
+              <ion-select formControlName="sex">
+                <ion-select-option value="Masculino">Masculino</ion-select-option>
+                <ion-select-option value="Feminino">Feminino</ion-select-option>
+              </ion-select>
             </ion-item>
             <ion-item>
-              <ion-input formControlName="password" type="password" placeholder="Password" required></ion-input>
+              <ion-input formControlName="password" [type]="!hide ? 'password' : 'text'" placeholder="Digite sua senha">
+              </ion-input>
+              <ion-button class="btn-default" expand="block" type="button" [disabled]="!form.controls['password'].value"
+                (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <ion-icon [name]="hide ? 'eye-off' : 'eye'"></ion-icon>
+              </ion-button>
             </ion-item>
           </div>
           <div padding>
-            <ion-button  size="large" type="submit" expand="block" (click)="create()">Cadastrar</ion-button>
+            <ion-button class="btn-default" type="submit" expand="block" (click)="create()" [disabled]="form.invalid">Cadastrar</ion-button>
           </div>
         </ion-col>
       </ion-row>

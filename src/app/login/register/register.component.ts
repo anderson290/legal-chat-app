@@ -29,10 +29,19 @@ export class RegisterComponent implements OnInit {
   formInit(){
     this.form = this.formBuilder.group({
       name: ['', Validators.required],
-      age: ['', Validators.required],
-      email: ['', Validators.required],
+      age: ['', Validators.compose([
+        Validators.required,
+        Validators.minLength(2)
+      ])],
+      email: ['', Validators.compose([
+        Validators.required,
+        Validators.email
+      ])],
       location: ['', Validators.required],
-      password: ['', Validators.required],
+      password: ['', Validators.compose([
+        Validators.required,
+        Validators.minLength(6)
+      ])],
       maritalStatus: ['', Validators.required],
       sex: ['', Validators.required],
       level: [2, Validators.nullValidator]
