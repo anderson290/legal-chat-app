@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   form: FormGroup;
+  hide: any;
 
   ngOnInit() {
     this.formInit();

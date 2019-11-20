@@ -1,5 +1,7 @@
 {
   "name": "ChatbotApp",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

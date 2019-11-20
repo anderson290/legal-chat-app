@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
 
   form: FormGroup;
   states: any;
-
+  hide: any;
   ngOnInit() {
     this.formInit();
   }
