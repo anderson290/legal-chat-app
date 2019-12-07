@@ -5,8 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login.component';
 import { LoginRoutingModule } from './login.router';
 import { RegisterComponent } from './register/register.component';
-
-
+import {NgxMaskIonicModule} from 'ngx-mask-ionic';
 
 @NgModule({
   imports: [
@@ -14,7 +13,8 @@ import { RegisterComponent } from './register/register.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    LoginRoutingModule
+    LoginRoutingModule,
+    NgxMaskIonicModule
   ],
   declarations: [LoginComponent, RegisterComponent]
 })

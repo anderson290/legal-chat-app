@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
+import {NgxMaskIonicModule} from 'ngx-mask-ionic';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { AuthService } from './services/auth.service';
     IonicModule.forRoot(),    
     AppRoutingModule,
     HttpClientModule,
+    NgxMaskIonicModule.forRoot()
   ],
   providers: [
     StatusBar,

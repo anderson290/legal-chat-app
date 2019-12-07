@@ -9,6 +9,13 @@ $white: #fff;
     fill: white;
 }
 
+.botChat {
+    display: flex;
+    flex-direction: column;
+    .btn-default-message{
+        margin-bottom: 10px;
+    }
+}
 
 .btn-send{
     /* --padding-start: 0.5em; */

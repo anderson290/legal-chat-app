@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
 
   constructor(
-    private formBuilder:FormBuilder,
+    private formBuilder: FormBuilder,
     private chatService: ChatService,
     private alertController: AlertController,
     private router: Router
@@ -25,14 +25,10 @@ export class RegisterComponent implements OnInit {
     this.formInit();
   }
 
-
-  formInit(){
+  formInit() {
     this.form = this.formBuilder.group({
       name: ['', Validators.required],
-      age: ['', Validators.compose([
-        Validators.required,
-        Validators.minLength(2)
-      ])],
+      age: ['', Validators.required],
       email: ['', Validators.compose([
         Validators.required,
         Validators.email
@@ -46,39 +42,39 @@ export class RegisterComponent implements OnInit {
       sex: ['', Validators.required],
       level: [2, Validators.nullValidator]
     });
-    this.states = [    
-      {"nome": "Acre", "sigla": "AC"},
-      {"nome": "Alagoas", "sigla": "AL"},
-      {"nome": "Amapá", "sigla": "AP"},
-      {"nome": "Amazonas", "sigla": "AM"},
-      {"nome": "Bahia", "sigla": "BA"},
-      {"nome": "Ceará", "sigla": "CE"},
-      {"nome": "Distrito Federal", "sigla": "DF"},
-      {"nome": "Espírito Santo", "sigla": "ES"},
-      {"nome": "Goiás", "sigla": "GO"},
-      {"nome": "Maranhão", "sigla": "MA"},
-      {"nome": "Mato Grosso", "sigla": "MT"},
-      {"nome": "Mato Grosso do Sul", "sigla": "MS"},
-      {"nome": "Minas Gerais", "sigla": "MG"},
-      {"nome": "Pará", "sigla": "PA"},
-      {"nome": "Paraíba", "sigla": "PB"},
-      {"nome": "Paraná", "sigla": "PR"},
-      {"nome": "Pernambuco", "sigla": "PE"},
-      {"nome": "Piauí", "sigla": "PI"},
-      {"nome": "Rio de Janeiro", "sigla": "RJ"},
-      {"nome": "Rio Grande do Norte", "sigla": "RN"},
-      {"nome": "Rio Grande do Sul", "sigla": "RS"},
-      {"nome": "Rondônia", "sigla": "RO"},
-      {"nome": "Roraima", "sigla": "RR"},
-      {"nome": "Santa Catarina", "sigla": "SC"},
-      {"nome": "São Paulo", "sigla": "SP"},
-      {"nome": "Sergipe", "sigla": "SE"},
-      {"nome": "Tocantins", "sigla": "TO"}    
-]
+    this.states = [
+      { "nome": "Acre", "sigla": "AC" },
+      { "nome": "Alagoas", "sigla": "AL" },
+      { "nome": "Amapá", "sigla": "AP" },
+      { "nome": "Amazonas", "sigla": "AM" },
+      { "nome": "Bahia", "sigla": "BA" },
+      { "nome": "Ceará", "sigla": "CE" },
+      { "nome": "Distrito Federal", "sigla": "DF" },
+      { "nome": "Espírito Santo", "sigla": "ES" },
+      { "nome": "Goiás", "sigla": "GO" },
+      { "nome": "Maranhão", "sigla": "MA" },
+      { "nome": "Mato Grosso", "sigla": "MT" },
+      { "nome": "Mato Grosso do Sul", "sigla": "MS" },
+      { "nome": "Minas Gerais", "sigla": "MG" },
+      { "nome": "Pará", "sigla": "PA" },
+      { "nome": "Paraíba", "sigla": "PB" },
+      { "nome": "Paraná", "sigla": "PR" },
+      { "nome": "Pernambuco", "sigla": "PE" },
+      { "nome": "Piauí", "sigla": "PI" },
+      { "nome": "Rio de Janeiro", "sigla": "RJ" },
+      { "nome": "Rio Grande do Norte", "sigla": "RN" },
+      { "nome": "Rio Grande do Sul", "sigla": "RS" },
+      { "nome": "Rondônia", "sigla": "RO" },
+      { "nome": "Roraima", "sigla": "RR" },
+      { "nome": "Santa Catarina", "sigla": "SC" },
+      { "nome": "São Paulo", "sigla": "SP" },
+      { "nome": "Sergipe", "sigla": "SE" },
+      { "nome": "Tocantins", "sigla": "TO" }
+    ]
   }
 
-  async create(){
-    await this.chatService.createUser(this.form.value).then(res =>{
+  async create() {
+    await this.chatService.createUser(this.form.value).then(res => {
       this.form.reset();
       this.presentAlert();
       this.router.navigate(['/']);

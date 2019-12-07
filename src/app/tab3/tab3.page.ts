@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CompanyService } from '../services/company.service';
 import { ModalController } from '@ionic/angular';
+import { TicketService } from 'src/app/services/ticket.service';
 import { CompanyDetailComponent } from './company-detail/company-detail.component';
 
 @Component({
@@ -11,6 +12,7 @@ import { CompanyDetailComponent } from './company-detail/company-detail.componen
 export class Tab3Page implements OnInit{
 
   companies: any;
+  ticket: any = undefined;
 
   constructor(
     private companyService: CompanyService,

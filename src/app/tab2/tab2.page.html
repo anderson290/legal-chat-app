@@ -28,7 +28,7 @@
     <ion-row>
       <ion-col class="botChat" *ngIf="conversationLog?.output?.generic[0].response_type == 'option'">
         <p>{{conversationLog?.output?.generic[0].title}}</p>
-        <button class="btn-option" *ngFor="let op of conversationLog?.output?.generic[0]?.options"
+        <button class="btn-default-message" *ngFor="let op of conversationLog?.output?.generic[0]?.options"
           (click)="getOption(op?.value?.input?.text)">{{op?.label}}</button>
       </ion-col>
     </ion-row>
